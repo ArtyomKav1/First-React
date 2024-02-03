@@ -5,10 +5,10 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 
 const Profile = (props) => {
-
+    
     return (
         <div>
-            <ProfileInfo editMode={props.editMode} setEditMode={props.setEditMode} saveProfile={props.saveProfile} savePhoto={props.savePhoto} isOwner={props.isOwner} profile={props.profile} status={props.status} updateUserStatus={props.updateUserStatus} />
+            <ProfileInfo profile={props.profile} status={props.status} updateUserStatus={props.updateUserStatus} />
             <MyPostsContainer />
         </div>
     )

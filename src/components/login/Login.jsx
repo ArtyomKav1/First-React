@@ -12,14 +12,14 @@ import s from '../Common/FormsControl/FormsControls.module.css';
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
+        props.login(formData.email, formData.password, formData.rememberMe)
     }
     if (props.isAuth) {
         return <Navigate to='/profile' />
     }
     return <>
         <h1>login</h1>
-        <LoginRedxuForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
+        <LoginRedxuForm onSubmit={onSubmit} />
     </>
 }
 
@@ -40,31 +40,18 @@ const LoginForm = (props) => {
             <div>
                 <Field type="checkbox" name={'rememberMe'} component={Input} /> remember me
             </div>
-
-
             {props.error && <div className={s.formSummaryError}>
                 {props.error}
             </div>}
-
-        
-            {props.captchaUrl && <img src={props.captchaUrl} />}
-            {props.captchaUrl && <Field
-                placeholder={'captcha'}
-                name={'captcha'}
-                component={Input}
-                validate={[requiredField,
-                    maxlength30]} />
-            }
-
-
-            <button>Login</button>
-        </form >
+            <div>
+                <button>Login</button>
+            </div>
+        </form>
     </>
 }
 
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
-    captchaUrl: state.auth.captchaUrl,
 
 })
 const LoginRedxuForm = reduxForm({ form: 'login' })(LoginForm)
