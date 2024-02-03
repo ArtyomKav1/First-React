@@ -2,7 +2,7 @@
   "name": "ff2",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://myusername.github.io/my-app",  //
+  "homepage": "https://artyomkav1.github.io/First-React/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^5.17.0",

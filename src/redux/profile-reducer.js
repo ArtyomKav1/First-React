@@ -1,9 +1,15 @@
 import { userAPI, profileAPI } from "../api/api"
+import { stopSubmit } from "redux-form"
 
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_STATUS = 'SET_USER_STATUS';
 const ADD_NEW_POST = 'ADD_NEW_POST';
+const SET_PHOTO = 'SET_PHOTO'
+const SET_EDIT_MODE = "SET_EDIT_MODE"
+
+
+
 let initialState = {
     posts: [
         { id: 1, message: 'Hi, how are you?', likesCount: 12 },
@@ -13,7 +19,8 @@ let initialState = {
     ],
     newPostText: 'it-kamasutra.com',
     profile: null,
-    status: ''
+    status: '',
+    editMode: false,
 }
 
 
@@ -32,13 +39,17 @@ const profileReducer = (state = initialState, action) => {
         }
         case SET_USER_PROFILE: {
             return { ...state, profile: action.profile }
-
         }
         case SET_USER_STATUS: {
-
             return { ...state, status: action.status }
-
         }
+        case SET_PHOTO: {
+            return { ...state, profile: { ...state.profile, photos: action.photos } }
+        }
+        case SET_EDIT_MODE: {
+            return { ...state, editMode: action.result }
+        }
+
         default:
             return state;
     }
@@ -63,6 +74,26 @@ export const updateUserStatusThunkCreator = (status) => async (dispatch) => {
 }
 
 
+export const setPhoto = (photos) => ({ type: SET_PHOTO, photos })
+export const savePhotoThunkCreator = (file) => async (dispatch) => {
+    let response = await profileAPI.savePhotoAPI(file)
+    if (response.data.resultCode === 0) {
+        dispatch(setPhoto(response.data.data.photos));
+    }
+}
+
+export const setEditMode = (result) => ({ type: SET_EDIT_MODE, result })
+export const saveProfileThunkCreator = (profileData) => async (dispatch, getState) => {
+    const userId = getState().auth.userId
+    const response = await profileAPI.updateProfileAPI(profileData)
+    if (response.data.resultCode === 0) {
+        dispatch(setEditMode(false))
+        dispatch(getUserProfileThunkCreator(userId))
+    } else {
+        // dispatch(stopSubmit("ProfileDataForm", { "contacts": { "facebook": response.data.messages[0] } }))
+        dispatch(stopSubmit("ProfileDataForm", { _error: response.data.messages[0] }));
+    }
+}
 export default profileReducer;
 
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { compose } from "redux"
-import { getUserProfileThunkCreator, updateUserStatusThunkCreator, getUserStatusThunkCreator } from '../../redux/profile-reducer';
+import { getUserProfileThunkCreator, updateUserStatusThunkCreator, saveProfileThunkCreator, getUserStatusThunkCreator, setEditMode, savePhotoThunkCreator } from '../../redux/profile-reducer';
 import { useParams } from 'react-router-dom';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
@@ -14,8 +14,7 @@ export function withRouter(Children) {
     }
 }
 class ProfileContainer extends React.Component {
-
-    componentDidMount() {
+    refreshProfile() {
         let userId = this.props.match.params.userId;
         if (!userId) {
             userId = this.props.authorizerUserId;
@@ -25,13 +24,20 @@ class ProfileContainer extends React.Component {
         }
         this.props.getUserProfile(userId);
         this.props.getUserStatus(userId)
-        
+    }
+    componentDidMount() {
+        this.refreshProfile()
+    }
+    componentDidUpdate(prevProps) {
+        if (this.props.match.params.userId != prevProps.match.params.userId) {
+            this.refreshProfile()
+        }
     }
 
     render() {
         // if (!this.props.isAuth) return <Navigate to='/login' />
         return (
-            <Profile {...this.props} />
+            <Profile {...this.props} isOwner={!this.props.match.params.userId} />
 
         )
     }
@@ -39,6 +45,7 @@ class ProfileContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
+    editMode: state.profilePage.editMode,
     profile: state.profilePage.profile,
     status: state.profilePage.status,
     authorizerUserId: state.auth.userId,
@@ -51,8 +58,10 @@ export default
 
             getUserProfile: getUserProfileThunkCreator,
             updateUserStatus: updateUserStatusThunkCreator,
-            getUserStatus: getUserStatusThunkCreator
-
+            getUserStatus: getUserStatusThunkCreator,
+            savePhoto: savePhotoThunkCreator,
+            saveProfile: saveProfileThunkCreator,
+            setEditMode: setEditMode
         }),
         withRouter,
         withAuthRedirect
