@@ -3,7 +3,7 @@ import React from 'react';
 import {
     // addPostActionCreator, updateNewPostTextActionCreator, 
     addNewPost
-} from "../../../redux/profile-reducer";
+} from "../../../redux/profile-reducer.tsx";
 import MyPosts from './MyPosts';
 import { connect } from 'react-redux'
 

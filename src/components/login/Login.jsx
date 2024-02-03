@@ -1,10 +1,10 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { Input } from "../../components/Common/FormsControl/formsControl"
-import { requiredField, maxlengthCreator } from '../../utils/VALIDATORS/validators'
+import { requiredField, maxlengthCreator } from '../../utils/VALIDATORS/validators.tsx'
 import { connect } from 'react-redux';
 import { Navigate } from "react-router-dom";
-import { loginThunkCreator, logoutThunkCreator } from '../../redux/auth-reducer';
+import { loginThunkCreator, logoutThunkCreator } from '../../redux/auth-reducer.tsx';
 import s from '../Common/FormsControl/FormsControls.module.css';
 const Login = (props) => {
     const onSubmit = (formData) => {

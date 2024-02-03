@@ -1,11 +1,11 @@
 
 import { applyMiddleware, combineReducers, legacy_createStore as createStore, compose } from "redux";
-import dialogsReducer from './dialogs-reducer';
-import sidebarReducer from './sidebar-reducer';
-import profileReducer from './profile-reducer';
-import usersReducer from './users-reducer';
-import authReducer from './auth-reducer';
-import appReducer from './app-reducer';
+import dialogsReducer from './dialogs-reducer.tsx';
+import sidebarReducer from './sidebar-reducer.tsx';
+import profileReducer from './profile-reducer.tsx';
+import usersReducer from './users-reducer.tsx';
+import authReducer from './auth-reducer.tsx';
+import appReducer from './app-reducer.tsx';
 import { reducer as formReducer } from 'redux-form';
 import { thunk as thunkMidleware } from "redux-thunk"
 

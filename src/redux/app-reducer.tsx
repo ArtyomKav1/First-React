@@ -1,6 +1,6 @@
 import { authAPI } from "../api/api"
 import { stopSubmit } from "redux-form"
-import { meThunkCreator } from "./auth-reducer"
+import { meThunkCreator } from "./auth-reducer.tsx"
 
 
 // const SET_USER_DATA = 'SET_USER_DATA';

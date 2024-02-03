@@ -4,7 +4,7 @@ import { memo } from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 import { Field, reduxForm } from 'redux-form'
-import { requiredField, maxlengthCreator } from '../../../utils/VALIDATORS/validators'
+import { requiredField, maxlengthCreator } from '../../../utils/VALIDATORS/validators.tsx'
 import { Textarea } from "../../Common/FormsControl/formsControl"
 
 

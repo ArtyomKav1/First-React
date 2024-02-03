@@ -1,4 +1,4 @@
-import { userAPI, profileAPI } from "../api/api"
+import { userAPI, profileAPI } from "../api/api.tsx"
 import { stopSubmit } from "redux-form"
 
 
