@@ -1,4 +1,4 @@
-import { userAPI } from "../api/api.tsx"
+import { userAPI } from "../api/api.ts"
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';

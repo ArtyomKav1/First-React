@@ -5,9 +5,9 @@ import {
     // sendMessageCreator
     // , updateNewMessageBodyCreator,
     addNewMassages
-} from "../../redux/dialogs-reducer.tsx";
+} from "../../redux/dialogs-reducer.ts";
 import { connect } from 'react-redux'
-import { withAuthRedirect } from '../../hoc/withAuthRedirect.tsx';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect.ts';
 import { compose } from "redux"
 
 let mapStateToProps = (state) => {

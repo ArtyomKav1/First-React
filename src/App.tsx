@@ -5,13 +5,13 @@ import Navbar from './components/Navbar/Navbar';
 import UsersContainer from './components/Users/UsersContainer'
 import { HashRouter, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from './components/login/Login';
-import { initializedApp } from "./redux/app-reducer.tsx"
+import { initializedApp } from "./redux/app-reducer.ts"
 import { compose } from "redux"
 import { connect } from "react-redux";
 import Preloader from './components/Preloader/Preloader';
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import store from "./redux/redux-store.tsx";
+import store from "./redux/redux-store.ts";
 import { Suspense } from 'react';
 import { withRouter } from './components/Profile/ProfileContainer';
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"))

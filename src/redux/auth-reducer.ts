@@ -1,4 +1,4 @@
-import { authAPI, securityAPI } from "../api/api.tsx"
+import { authAPI, securityAPI } from "../api/api.ts"
 import { stopSubmit } from "redux-form"
 
 

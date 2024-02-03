@@ -1,11 +1,15 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { Input } from "../../components/Common/FormsControl/formsControl"
-import { requiredField, maxlengthCreator } from '../../utils/VALIDATORS/validators.tsx'
+import { requiredField, maxlengthCreator } from '../../utils/VALIDATORS/validators.js'
 import { connect } from 'react-redux';
 import { Navigate } from "react-router-dom";
-import { loginThunkCreator, logoutThunkCreator } from '../../redux/auth-reducer.tsx';
+import { loginThunkCreator, logoutThunkCreator } from '../../redux/auth-reducer.ts';
 import s from '../Common/FormsControl/FormsControls.module.css';
+
+
+
+
 const Login = (props) => {
     const onSubmit = (formData) => {
         props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)

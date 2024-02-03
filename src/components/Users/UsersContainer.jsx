@@ -4,12 +4,12 @@ import {
     getUsersThunkCreator, onPageChangedThunkCreator,
     unfollowThunkCreator,
     followThunkCreator
-} from "../../redux/users-reducer.tsx";
+} from "../../redux/users-reducer.ts";
 import { compose } from "redux"
 import Users from './Users'
 import Preloader from '../Preloader/Preloader';
-import { withAuthRedirect } from '../../hoc/withAuthRedirect.tsx';
-import { getUser, getPageSize, getTotalUsersCount, getCurrentPage, getIsFetching, getFollowingInProgress } from "../../redux/users-selectors.tsx"
+import { withAuthRedirect } from '../../hoc/withAuthRedirect.ts';
+import { getUser, getPageSize, getTotalUsersCount, getCurrentPage, getIsFetching, getFollowingInProgress } from "../../redux/users-selectors.ts"
 
 
 
